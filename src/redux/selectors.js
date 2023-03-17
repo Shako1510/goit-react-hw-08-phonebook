@@ -16,3 +16,15 @@ export const getVisibleContact = state => {
     return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter))
 
 }
+
+export const getUserName = state => state.auth.user.name;
+
+export const getUserEmail = state => state.auth.user.email;
+
+export const getIsLoged = state => state.auth.isLoged;
+
+export const getUser = state => state.auth.user;
+
+export const getIsRefreshing = state => state.auth.isRefreshing;
+
+export const getErrorAuth = state => state.auth.error;
