@@ -7,10 +7,8 @@ import { addContact } from '../../redux/operation';
 import { getItems } from '../../redux/selectors';
 import { FormBox, ButtonAdd, InputBox, LabelBox } from './FormStyled';
 
-
 const nameInputId = nanoid(5);
 const numberInputId = nanoid(8)
-
 
 const Form = () => {
 
@@ -53,7 +51,6 @@ const Form = () => {
         setName('');
         setNumber('');
     };
-
 
     return (
         <FormBox>

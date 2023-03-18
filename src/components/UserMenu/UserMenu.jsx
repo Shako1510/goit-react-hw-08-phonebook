@@ -3,12 +3,9 @@ import { DivBox, Button, Mail } from "./UserMenuStyled";
 import { getUserEmail } from '../../redux/selectors';
 import { logout } from "../../redux/operation";
 
-
 export default function UserMenu() {
     const dispatch = useDispatch();
     const email = useSelector(getUserEmail)
-
-
 
     return (
         <DivBox>

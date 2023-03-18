@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// import * as api from "../components/api/phonebook"
+
 
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
@@ -13,7 +13,6 @@ const token = {
         axios.defaults.headers.common.Authorization = '';
     },
 };
-
 
 export const register = createAsyncThunk(
     'auth/register',
@@ -31,7 +30,6 @@ export const register = createAsyncThunk(
     }
 );
 
-
 export const login = createAsyncThunk(
     'auth/login',
     async (credentials, { rejectWithValue }) => {
@@ -47,7 +45,6 @@ export const login = createAsyncThunk(
         }
     }
 );
-
 
 export const logout = createAsyncThunk(
     'auth/logout',

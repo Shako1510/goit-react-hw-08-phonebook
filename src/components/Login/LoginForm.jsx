@@ -5,7 +5,6 @@ import { login } from '../../redux/operation';
 import { getErrorAuth } from "redux/selectors";
 import { Form, Input, Button, Label, Div, Title, ErrorText } from "./LoginFormStyled";
 
-
 export default function LoginForm() {
     const dispatch = useDispatch();
     const isError = useSelector(getErrorAuth)
@@ -14,7 +13,6 @@ export default function LoginForm() {
 
     const emailInputId = nanoid();
     const passwordInputId = nanoid();
-
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -29,16 +27,12 @@ export default function LoginForm() {
         }
     };
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(login({ email, password }));
         setEmail('');
         setPassword('');
     };
-
-
 
     return (
 

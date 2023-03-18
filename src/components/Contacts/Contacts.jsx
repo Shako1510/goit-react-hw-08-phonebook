@@ -29,11 +29,6 @@ const Contacts = () => {
 
     const filteredContacts = contactFiltering();
 
-    // if (!isLoged) {
-    //   return <Navigate to="/login"/>
-    // };
-
-
     return (
         <DivContainer >
             <Form />

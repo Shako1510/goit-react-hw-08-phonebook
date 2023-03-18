@@ -5,7 +5,6 @@ import { register } from '../../redux/operation';
 import { getErrorAuth } from '../../redux/selectors';
 import { DivBox, TitleBox, FormBox, InputBox, Button, ErrorText, LabelBox } from "./RegisterFormStyled";
 
-
 export default function RegisterForm() {
     const dispatch = useDispatch();
     const isError = useSelector(getErrorAuth);
@@ -16,7 +15,6 @@ export default function RegisterForm() {
     const nameInputId = nanoid();
     const emailInputId = nanoid();
     const passwordInputId = nanoid();
-
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -33,8 +31,6 @@ export default function RegisterForm() {
         }
     };
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(register({ name, email, password }));
@@ -46,8 +42,6 @@ export default function RegisterForm() {
     // if (isLoged) {
     //   return <Navigate to="/contacts"/>
     // }
-
-
 
     return (
 
