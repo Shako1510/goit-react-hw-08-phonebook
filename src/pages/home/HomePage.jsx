@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import HomePage from "../../components/homePage/HomePage";
+import Home from "../../components/Home/Home";
 
 export default function LoginPage() {
     return (
         <div>
-            {<HomePage />}
+            {<Home />}
             <Outlet />
         </div>
     )

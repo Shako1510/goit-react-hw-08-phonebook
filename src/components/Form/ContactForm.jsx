@@ -1,49 +1,64 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { FormBox, ButtonAdd, InputBox, LabelBox } from './FormStyled';
+import { nanoid } from 'nanoid';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/operation';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../redux/operation';
+import { getItems } from '../../redux/selectors';
+import { FormBox, ButtonAdd, InputBox, LabelBox } from './FormStyled';
 
-export function Form() {
+
+const nameInputId = nanoid(5);
+const numberInputId = nanoid(8)
+
+
+const Form = () => {
 
     const [name, setName] = useState('');
-    const [number, setPhone] = useState('');
+    const [number, setNumber] = useState('');
 
+    const items = useSelector(getItems);
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts);
 
-    const handleInputChange = e => {
+    const handleInputChange = (e) => {
         const { name, value } = e.currentTarget;
+
         switch (name) {
-            case 'name':
-                setName(value)
-                break;
-            case 'number':
-                setPhone(value)
-                break;
+            case "number":
+                return setNumber(value);
+            case "name":
+                return setName(value);
             default:
-                console.log('incorrect input name');
+                return;
         }
-    }
+    };
 
-    const handleSubmit = event => {
-        event.preventDefault();
-
-        if (contacts.find(contact => contact.name === name)) {
-            alert(`${name} is already in contacts`);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const findContact = items.find((item) => item.name === name);
+        if (findContact) {
+            toast.warn(`${name} is already in contacts`,
+                {
+                    dragable: true,
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 2000,
+                }
+            );
+            setName('');
+            setNumber('');
             return;
         }
-
+        // chekingContacts();
         dispatch(addContact({ name, number }));
         setName('');
-        setPhone('');
-
+        setNumber('');
     };
+
 
     return (
         <FormBox>
             <form onSubmit={handleSubmit}>
-                <LabelBox >Name
+                <LabelBox>Name
                     <InputBox
                         type="text"
                         name="name"
@@ -52,7 +67,7 @@ export function Form() {
                         required
                         onChange={handleInputChange}
                         value={name}
-
+                        id={nameInputId}
                     />
                 </LabelBox>
 
@@ -65,14 +80,15 @@ export function Form() {
                         required
                         onChange={handleInputChange}
                         value={number}
+                        id={numberInputId}
                     />
                 </LabelBox>
 
                 <ButtonAdd type="submit">Add contact</ButtonAdd>
             </form>
-        </FormBox >
+            <ToastContainer style={{ fontSize: '20px' }} />
+        </FormBox>
     )
-
 }
 
 export default Form;

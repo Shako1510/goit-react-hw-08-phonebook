@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import Contacts from "components/contacts/Contacts";
+import Contacts from "components/Contacts/Contacts";
 
 export default function ContactsPage() {
     return (
